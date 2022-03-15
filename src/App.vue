@@ -1,6 +1,6 @@
 <template>
   <the-header :title="title"></the-header>
-  <stored-resources :resources="resources"></stored-resources>
+  <stored-resources :storedResources="resources"></stored-resources>
 </template>
 
 <script>
@@ -19,10 +19,10 @@ export default {
           link: 'www.google.com',
         },
         {
-          id: 'google',
-          title: 'Google',
-          description: 'google to search',
-          link: 'www.google.com',
+          id: 'vue3',
+          title: 'Vue 3',
+          description: 'learn Vue.js',
+          link: 'www.vue.com',
         },
       ],
     };
