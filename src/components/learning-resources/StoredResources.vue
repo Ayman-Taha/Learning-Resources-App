@@ -1,7 +1,7 @@
 <template>
   <ul>
     <learning-resource
-      v-for="res in storedResources"
+      v-for="res in resources"
       :key="res.id"
       :title="res.title"
       :description="res.description"
@@ -14,7 +14,7 @@
 import LearningResource from './LearningResource.vue';
 export default {
   components: { LearningResource },
-  props: ['storedResources'],
+  inject: ['resources'],
 };
 </script>
 
