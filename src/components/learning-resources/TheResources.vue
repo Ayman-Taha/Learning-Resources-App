@@ -11,7 +11,9 @@
       >Add Resource</base-button
     >
   </base-card>
-  <component :is="activeTab"></component>
+  <keep-alive>
+    <component :is="activeTab"></component>
+  </keep-alive>
 </template>
 
 <script>
@@ -50,9 +52,20 @@ export default {
     changeTab(tab) {
       this.activeTab = tab;
     },
+    pushResource(id, title, description, link) {
+      const newResource = {
+        id: id,
+        title: title,
+        description: description,
+        link: link,
+      };
+
+      this.resources.unshift(newResource);
+      this.changeTab('stored-resources');
+    },
   },
   provide() {
-    return { resources: this.resources };
+    return { resources: this.resources, pushResource: this.pushResource };
   },
 };
 </script>
