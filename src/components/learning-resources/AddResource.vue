@@ -1,4 +1,12 @@
 <template>
+  <base-dialog v-if="inputIsInvalid" title="Invalid Input" @close="closeDialog">
+    <template #body>
+      <p>Unfortunately one or more of your Inputs are empty!</p>
+    </template>
+    <template #actions>
+      <base-button @click="closeDialog">OK</base-button>
+    </template>
+  </base-dialog>
   <base-card>
     <form @submit.prevent="submitResource">
       <div class="form-control">
@@ -29,17 +37,34 @@
 <script>
 import BaseButton from '../ui/BaseButton.vue';
 import BaseCard from '../ui/BaseCard.vue';
+import BaseDialog from '../ui/BaseDialog.vue';
 
 export default {
-  components: { BaseCard, BaseButton },
+  components: { BaseCard, BaseButton, BaseDialog },
+  data() {
+    return {
+      inputIsInvalid: false,
+    };
+  },
   methods: {
     submitResource() {
       const resourceID = new Date().toISOString;
       const inputTitle = this.$refs.title.value;
       const inputDescription = this.$refs.description.value;
       const inputLink = this.$refs.link.value;
+      if (
+        inputTitle.trim() === '' ||
+        inputDescription.trim() === '' ||
+        inputLink.trim() === ''
+      ) {
+        this.inputIsInvalid = true;
+        return;
+      }
 
       this.pushResource(resourceID, inputTitle, inputDescription, inputLink);
+    },
+    closeDialog() {
+      this.inputIsInvalid = false;
     },
   },
   inject: ['pushResource'],
