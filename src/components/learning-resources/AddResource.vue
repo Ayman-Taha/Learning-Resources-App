@@ -60,7 +60,10 @@ export default {
         this.inputIsInvalid = true;
         return;
       }
-
+      this.$refs.title.value =
+        this.$refs.description.value =
+        this.$refs.link.value =
+          '';
       this.pushResource(resourceID, inputTitle, inputDescription, inputLink);
     },
     closeDialog() {

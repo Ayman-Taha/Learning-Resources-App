@@ -65,15 +65,10 @@ export default {
     },
 
     deleteResource(index) {
-      console.log(index);
-      console.log(this.resources);
       const resourceIndex = this.resources.findIndex((res) => {
-        console.log(res.id);
         return res.id === index;
       });
-      console.log(resourceIndex);
       this.resources.splice(resourceIndex, 1);
-      console.log(this.resources);
     },
   },
   provide() {
