@@ -63,9 +63,25 @@ export default {
       this.resources.unshift(newResource);
       this.changeTab('stored-resources');
     },
+
+    deleteResource(index) {
+      console.log(index);
+      console.log(this.resources);
+      const resourceIndex = this.resources.findIndex((res) => {
+        console.log(res.id);
+        return res.id === index;
+      });
+      console.log(resourceIndex);
+      this.resources.splice(resourceIndex, 1);
+      console.log(this.resources);
+    },
   },
   provide() {
-    return { resources: this.resources, pushResource: this.pushResource };
+    return {
+      resources: this.resources,
+      pushResource: this.pushResource,
+      deleteResource: this.deleteResource,
+    };
   },
 };
 </script>

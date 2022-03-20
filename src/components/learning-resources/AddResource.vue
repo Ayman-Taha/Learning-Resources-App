@@ -10,7 +10,7 @@
   <base-card>
     <form @submit.prevent="submitResource">
       <div class="form-control">
-        <label for="name">Title:</label>
+        <label for="name">Title: </label>
         <input type="text" name="name" id="name" ref="title" />
       </div>
       <div class="form-control">
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     submitResource() {
-      const resourceID = new Date().toISOString;
+      const resourceID = new Date().toISOString();
       const inputTitle = this.$refs.title.value;
       const inputDescription = this.$refs.description.value;
       const inputLink = this.$refs.link.value;

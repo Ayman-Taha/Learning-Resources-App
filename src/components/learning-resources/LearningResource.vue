@@ -16,13 +16,7 @@
 <script>
 export default {
   props: ['id', 'title', 'description', 'link'],
-  inject: ['resources'],
-  methods: {
-    deleteResource(id) {
-      const resourceIndex = this.resources.findIndex((res) => res.id === id);
-      this.resources.splice(resourceIndex, 1);
-    },
-  },
+  inject: ['resources', 'deleteResource'],
 };
 </script>
 
